@@ -1,6 +1,14 @@
 var React = require('react');
+var ReactRouter = require("react-router-dom");
+var Router = ReactRouter.BrowserRouter;
+var Route = ReactRouter.Route;
+var Switch = ReactRouter.Switch;
+
 var Header = require('./Header');
 var MainSearch = require('./MainSearch');
+var Forecast = require('./Forecast');
+var Detailed = require('./Detailed');
+
 
 import { injectGlobal } from 'emotion';
 
@@ -30,10 +38,26 @@ injectGlobal`
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <Header />
-        <MainSearch />
-      </div>
+      <Router>
+        <div>
+          <Header />
+          <Switch>
+            <Route exact path='/' component={MainSearch} />
+            <Route exact path='/forecast:params' component={Forecast} />
+            <Route exact path='/detail/:somecity' component={Detailed} />
+            <Route render={function () {
+              return <p>not found</p>
+            }} />
+
+          </Switch>
+        </div>
+      </Router>
+
+
+      // <div>
+      //   <Header />
+      //   <MainSearch />
+      // </div>
     )
   }
 }

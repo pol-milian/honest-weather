@@ -1,6 +1,7 @@
 var React = require('react');
 var PropTypes = require("prop-types");
-
+var api = require('../utils/api');
+var Link = require('react-router-dom').Link;
 import { css } from 'emotion';
 
 const wrapper = css`
@@ -37,36 +38,60 @@ class Search extends React.Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
 
-    this.props.onSubmit(
-      this.props.id,
-      this.state.city
-    );
+    // this.props.onSubmit(
+    //   this.state.city
+    // );
+
+    api.getForecast(this.state.city)
+      .then(function (res) {
+        console.log(res)
+      })
+
+    this.setState(function () {
+      return {
+        city: ''
+      }
+    })
   }
 
   render() {
+    var cityURI = encodeURI(this.state.city);
     return (
       <div className={wrapper}>
-        <form onSubmit={this.handleSubmit}>
+        <div>
           <label htmlFor='city'></label>
           {this.props.label}
           <input
             className={inputs}
             type="text"
-            id="city"
             placeholder="City"
             value={this.state.city}
             onChange={this.handleChange}
           />
-          <button
+          {/* <button
             className='button'
-            type='submit'
-            disabled={!this.state.city}>
+            type='button'
+            disabled={!this.state.city}
+            onClick={this.handleSubmit}>
             Submit
-          </button>
-        </form>
+          </button> */}
+
+          <Link
+            to={{
+              pathname: '/forecasts',
+              search: '?city=' + cityURI
+            }}>
+            <button
+              className="button"
+              type="button">
+              Get forecast
+              </button>
+          </Link>
+
+
+        </div>
       </div>
     )
   }

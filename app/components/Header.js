@@ -24,7 +24,7 @@ const navHeader = css`
 function Header(props) {
   return (
     <div className={nav}>
-      <h1 className={navHeader}>Hello</h1>
+      <h1 className={navHeader}>Pol's React Weather App</h1>
       <Search />
     </div>
   )
