@@ -1,22 +1,13 @@
 var React = require('react');
+var DayItem = require('./DayItem')
 var queryString = require('query-string');
 var api = require('../utils/api');
 var utils = require('../utils/helpers');
-var getDate = utils.getDate;
 var convertTemp = utils.convertTemp;
 import { css } from 'emotion';
 
 
-function DayItem(props) {
-  var date = getDate(props.day.dt);
-  var icon = props.day.weather[0].icon;
-  return (
-    <div onClick={props.onClick}>
-      <img src={'./app/images/weather-icons/' + icon + '.svg'} alt="Weather" />
-      <h2>{date}</h2>
-    </div>
-  )
-}
+
 
 
 
@@ -76,7 +67,7 @@ class Forecast extends React.Component {
     return this.state.loading === true
       ? <h1>Loading</h1>
       : <div>
-        <h1>{this.city}</h1>
+        <h1>{(this.city).toUpperCase()}</h1>
         <div>
           {this.state.forecastData.list.map(function (listItem) {
             return <DayItem onClick={this.handleClick.bind(this, listItem)} key={listItem.dt} day={listItem} />

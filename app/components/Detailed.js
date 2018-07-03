@@ -1,12 +1,32 @@
 var React = require('react');
+var DayItem = require('./DayItem');
+var convertTemp = require('../utils/helpers').convertTemp;
+
+import { css } from 'emotion'
+
+
+
 
 
 class Detailed extends React.Component {
   render() {
-    console.log(this.props)
+    var props = this.props.location.state;
     return (
-      <div>
-        <p>Hey</p>
+      <div className={css`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+        margin-top: 4rem;
+      `}>
+        <DayItem day={props} />
+        <div>
+          <p>{props.city}</p>
+          <p>{props.weather[0].description}</p>
+          <p>min temp: {convertTemp(props.main.temp_min)} degrees F</p>
+          <p>max temp: {convertTemp(props.main.temp_max)} degrees F</p>
+          <p>humidity: {props.main.humidity} degrees F</p>
+        </div>
       </div>
     )
   }

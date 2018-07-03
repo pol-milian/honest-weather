@@ -14,9 +14,9 @@ const nav = css`
   height: 10%;
 `
 const navHeader = css`
-  margin: 1rem;
+  margin: 0.3rem;
   color: white;
-  font-size: 2rem;
+  
 `
 
 
@@ -24,7 +24,7 @@ const navHeader = css`
 function Header(props) {
   return (
     <div className={nav}>
-      <h1 className={navHeader}>Pol's React Weather App</h1>
+      <h2 className={navHeader}>Pol's React Weather App</h2>
       <Search
         onSubmit={function (city) {
           props.history.push({
