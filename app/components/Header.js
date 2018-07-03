@@ -25,7 +25,13 @@ function Header(props) {
   return (
     <div className={nav}>
       <h1 className={navHeader}>Pol's React Weather App</h1>
-      <Search />
+      <Search
+        onSubmit={function (city) {
+          props.history.push({
+            pathname: '/forecast',
+            search: '?city=' + city
+          });
+        }} />
     </div>
   )
 }

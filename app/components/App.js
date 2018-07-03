@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactRouter = require("react-router-dom");
-var Router = ReactRouter.BrowserRouter;
+var BrowserRouter = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
 
@@ -27,6 +27,7 @@ injectGlobal`
   }
   body {
     position: relative;
+    margin: 0;
   }
 
 
@@ -38,26 +39,18 @@ injectGlobal`
 class App extends React.Component {
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div>
-          <Header />
-          <Switch>
-            <Route exact path='/' component={MainSearch} />
-            <Route exact path='/forecast:params' component={Forecast} />
-            <Route exact path='/detail/:somecity' component={Detailed} />
-            <Route render={function () {
-              return <p>not found</p>
-            }} />
+          <Route render={Header} />
+          <Route exact path='/' render={MainSearch} />
+          <Route path='/forecast' component={Forecast} />
 
-          </Switch>
+          <Route path='/detailed/:city' component={Detailed} />
         </div>
-      </Router>
+      </BrowserRouter>
 
 
-      // <div>
-      //   <Header />
-      //   <MainSearch />
-      // </div>
+
     )
   }
 }

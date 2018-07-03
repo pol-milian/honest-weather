@@ -40,14 +40,11 @@ class Search extends React.Component {
 
   handleSubmit() {
 
-    // this.props.onSubmit(
-    //   this.state.city
-    // );
+    this.props.onSubmit(
+      this.state.city
+    );
 
-    api.getForecast(this.state.city)
-      .then(function (res) {
-        console.log(res)
-      })
+
 
     this.setState(function () {
       return {
@@ -70,25 +67,14 @@ class Search extends React.Component {
             value={this.state.city}
             onChange={this.handleChange}
           />
-          {/* <button
-            className='button'
-            type='button'
-            disabled={!this.state.city}
-            onClick={this.handleSubmit}>
-            Submit
-          </button> */}
 
-          <Link
-            to={{
-              pathname: '/forecasts',
-              search: '?city=' + cityURI
-            }}>
-            <button
-              className="button"
-              type="button">
-              Get forecast
-              </button>
-          </Link>
+          <button
+            className="button"
+            type="button"
+            onClick={this.handleSubmit}>
+            Get forecast
+          </button>
+
 
 
         </div>

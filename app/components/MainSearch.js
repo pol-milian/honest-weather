@@ -15,7 +15,13 @@ function MainSearch(props) {
   return (
     <div className={wrapper}>
       <h1>Please enter a city:</h1>
-      <Search />
+      <Search
+        onSubmit={function (city) {
+          props.history.push({
+            pathname: 'forecast',
+            search: '?city=' + city
+          });
+        }} />
     </div>
   )
 }

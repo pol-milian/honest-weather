@@ -1,10 +1,15 @@
 var React = require('react');
 
 
-function Detailed(props) {
-  return <div>
-    <p>test</p>
-  </div>
+class Detailed extends React.Component {
+  render() {
+    console.log(this.props)
+    return (
+      <div>
+        <p>Hey</p>
+      </div>
+    )
+  }
 }
 
 
