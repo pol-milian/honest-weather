@@ -68,6 +68,7 @@ class Search extends React.Component {
             placeholder="City"
             value={this.state.city}
             onChange={this.handleChange}
+            required
           />
 
           <button
@@ -76,6 +77,7 @@ class Search extends React.Component {
             onClick={this.handleSubmit}>
             Get forecast
           </button>
+
 
 
 

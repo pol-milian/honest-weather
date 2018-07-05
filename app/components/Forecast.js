@@ -10,7 +10,6 @@ import { css } from 'emotion';
 
 
 
-DayItem.a
 
 class Forecast extends React.Component {
   constructor(props) {
@@ -18,7 +17,8 @@ class Forecast extends React.Component {
 
     this.state = {
       forecastData: [],
-      loading: true
+      loading: true,
+      error: null,
     }
     this.makeRequest = this.makeRequest.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -44,14 +44,23 @@ class Forecast extends React.Component {
 
     api.getForecast(city)
       .then(function (res) {
-
         this.setState(function () {
           return {
             loading: false,
-            forecastData: res
+            forecastData: res,
+            error: null,
           }
-        });
+        })
+      }.bind(this))
+      .catch(function (error) {
+        this.setState(function () {
+          return {
+            error: 'An error has occurred. Please check that the location you wrote is correct.',
+            loading: false,
+          }
+        })
       }.bind(this));
+
   }
 
   handleClick(city) {
@@ -64,9 +73,22 @@ class Forecast extends React.Component {
 
 
   render() {
-    return this.state.loading === true
-      ? <h1>Loading</h1>
-      : <div>
+    var error = this.state.error;
+    if (this.state.loading === true) {
+      return (<h1>Loading</h1>)
+    }
+
+    if (error) {
+      return (
+        <div>
+          <p>{error}</p>
+
+        </div>
+      )
+    }
+
+    return (
+      <div>
         <h1>{(this.city).toUpperCase()}</h1>
         <div>
           {this.state.forecastData.list.map(function (listItem) {
@@ -74,6 +96,7 @@ class Forecast extends React.Component {
           }, this)}
         </div>
       </div>
+    )
   }
 }
 
