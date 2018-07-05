@@ -23,8 +23,8 @@ class Detailed extends React.Component {
         <div>
           <p>{props.city}</p>
           <p>{props.weather[0].description}</p>
-          <p>min temp: {convertTemp(props.main.temp_min)} degrees C</p>
-          <p>max temp: {convertTemp(props.main.temp_max)} degrees C</p>
+          <p>min temp: {convertTemp(props.temp.min)} degrees C</p>
+          <p>max temp: {convertTemp(props.temp.max)} degrees C</p>
         </div>
       </div>
     )
