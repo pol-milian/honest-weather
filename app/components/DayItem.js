@@ -12,7 +12,7 @@ function DayItem(props) {
     <div onClick={props.onClick}>
       <img
         className={css`
-          width: 10rem;
+          width: 5rem;
           height: auto;
         `}
         src={'../app/images/weather-icons/' + icon + '.svg'}
