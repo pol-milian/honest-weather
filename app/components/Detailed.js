@@ -2,7 +2,12 @@ var React = require('react');
 var DayItem = require('./DayItem');
 var convertTemp = require('../utils/helpers').convertTemp;
 
-import { css } from 'emotion'
+import { css } from 'emotion';
+
+const infoWrapper = css`
+  color: white;
+`
+
 
 
 
@@ -20,7 +25,7 @@ class Detailed extends React.Component {
         margin-top: 4rem;
       `}>
         <DayItem day={props} />
-        <div>
+        <div className={infoWrapper}>
           <p>{props.city}</p>
           <p>{props.weather[0].description}</p>
           <p>min temp: {convertTemp(props.temp.min)} degrees C</p>
