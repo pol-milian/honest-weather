@@ -1,5 +1,6 @@
 var React = require('react');
 var Search = require('./Search');
+import { Link } from 'react-router-dom';
 import { css } from 'emotion';
 
 
@@ -24,7 +25,7 @@ const navHeader = css`
 function Header(props) {
   return (
     <div className={nav}>
-      <h2 className={navHeader}>Pol's React Weather App</h2>
+      <Link className={css`text-decoration: none;`} to="/"><h2 className={navHeader}>Another React Weather App</h2> </ Link>
       <Search
         onSubmit={function (city) {
           props.history.push({

@@ -12,9 +12,15 @@ const wrapper = css`
 
 
 function MainSearch(props) {
+
   return (
     <div className={wrapper}>
-      <h1>Please enter a city:</h1>
+      <h1 className={css`
+        color: white;
+        @media (max-width: 348px) {
+          font-size: 1.1em;
+        }`}>Please enter a city:
+      </h1>
       <Search
         onSubmit={function (city) {
           props.history.push({

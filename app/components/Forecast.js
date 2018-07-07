@@ -1,5 +1,6 @@
 var React = require('react');
 var DayItem = require('./DayItem')
+import { Link } from 'react-router-dom';
 var queryString = require('query-string');
 var api = require('../utils/api');
 var utils = require('../utils/helpers');
@@ -7,7 +8,23 @@ var convertTemp = utils.convertTemp;
 import { css } from 'emotion';
 
 
+const cityName = css`
+  text-align: center;
+  color: #338b90;
+`
 
+const forecastDays = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 60px auto;
+`
+
+const errorContainer = css`
+  margin: 4rem auto;
+  text-align: center;
+`
 
 
 
@@ -80,8 +97,9 @@ class Forecast extends React.Component {
 
     if (error) {
       return (
-        <div>
+        <div className={errorContainer}>
           <p>{error}</p>
+          <Link className={css`color: red;`} to='/'>Try searching for another city </ Link>
 
         </div>
       )
@@ -89,8 +107,8 @@ class Forecast extends React.Component {
 
     return (
       <div>
-        <h1>{(this.city).toUpperCase()}</h1>
-        <div>
+        <h1 className={cityName}>{(this.city).toUpperCase()}</h1>
+        <div className={forecastDays}>
           {this.state.forecastData.list.map(function (listItem) {
             return <DayItem onClick={this.handleClick.bind(this, listItem)} key={listItem.dt} day={listItem} />
           }, this)}
