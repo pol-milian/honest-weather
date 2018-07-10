@@ -10,7 +10,7 @@ var Forecast = require('./Forecast');
 var Detailed = require('./Detailed');
 
 
-import { injectGlobal } from 'emotion';
+import { injectGlobal } from 'styled-components';
 
 
 injectGlobal`
@@ -34,10 +34,10 @@ injectGlobal`
     background: linear-gradient(to right, #feb47b, #ff7e5f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   }
-
-
-
-`
+  a {
+    text-decoration: none;
+  }
+`;
 
 
 

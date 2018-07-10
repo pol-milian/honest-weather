@@ -1,16 +1,25 @@
 var React = require('react');
 var utils = require('../utils/helpers');
 var getDate = utils.getDate;
+import styled from 'styled-components';
 
-import { css } from 'emotion';
 
-const dayContainer = css`
+const DayContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin: 1rem;
-`
+`;
+
+const WeatherIcon = styled.img`
+  width: 5rem;
+  height: auto;
+`;
+const Date = styled.h2`
+  color: #338b90;
+  
+`;
 
 
 
@@ -19,17 +28,13 @@ function DayItem(props) {
   var date = getDate(props.day.dt);
   var icon = props.day.weather[0].icon;
   return (
-    <div className={dayContainer} onClick={props.onClick}>
-      <img
-        className={css`
-          width: 5rem;
-          height: auto;
-        `}
+    <DayContainer onClick={props.onClick}>
+      <WeatherIcon
         src={'../app/images/weather-icons/' + icon + '.svg'}
         alt="Weather"
       />
-      <h2 className={css`color: #338b90;`}>{date}</h2>
-    </div>
+      <Date>{date}</ Date>
+    </ DayContainer>
   )
 }
 

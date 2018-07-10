@@ -1,26 +1,28 @@
 var React = require('react');
 var Search = require('./Search');
-import { css } from 'emotion';
+import styled from 'styled-components';
 
-const wrapper = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+
+
+const Wrapper = styled.div`
   margin-top: 20vh;
-`
+`;
 
+const CityPrompt = styled.h1`
+  text-align: center;
+  color: white;
+  @media (max-width: 348px) {
+          font-size: 1.1em;
+        }
+
+`;
 
 function MainSearch(props) {
 
   return (
-    <div className={wrapper}>
-      <h1 className={css`
-        color: white;
-        @media (max-width: 348px) {
-          font-size: 1.1em;
-        }`}>Please enter a city:
-      </h1>
+    <Wrapper>
+      <CityPrompt>Please enter a city:
+      </ CityPrompt>
       <Search
         onSubmit={function (city) {
           props.history.push({
@@ -28,7 +30,7 @@ function MainSearch(props) {
             search: '?city=' + city
           });
         }} />
-    </div>
+    </ Wrapper>
   )
 }
 

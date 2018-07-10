@@ -3,28 +3,33 @@ var DayItem = require('./DayItem')
 import { Link } from 'react-router-dom';
 var queryString = require('query-string');
 var api = require('../utils/api');
-var utils = require('../utils/helpers');
-var convertTemp = utils.convertTemp;
-import { css } from 'emotion';
+import styled from 'styled-components';
 
 
-const cityName = css`
+const ForecastWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const CityName = styled.h1`
   text-align: center;
   color: #338b90;
-`
+  display: block;
+`;
 
-const forecastDays = css`
+const ForecastDays = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 60px auto;
-`
+  margin: auto;
+`;
 
-const errorContainer = css`
+const ErrorContainer = styled.div`
   margin: 4rem auto;
+  color: white;
   text-align: center;
-`
+`;
 
 
 
@@ -97,23 +102,23 @@ class Forecast extends React.Component {
 
     if (error) {
       return (
-        <div className={errorContainer}>
+        <ErrorContainer>
           <p>{error}</p>
-          <Link className={css`color: red;`} to='/'>Try searching for another city </ Link>
+          <Link to="/">Try searching for another city </ Link>
 
-        </div>
+        </ ErrorContainer>
       )
     }
 
     return (
-      <div>
-        <h1 className={cityName}>{(this.city).toUpperCase()}</h1>
-        <div className={forecastDays}>
+      <ForecastWrapper>
+        <CityName>{(this.city).toUpperCase()}</ CityName>
+        <ForecastDays>
           {this.state.forecastData.list.map(function (listItem) {
             return <DayItem onClick={this.handleClick.bind(this, listItem)} key={listItem.dt} day={listItem} />
           }, this)}
-        </div>
-      </div>
+        </ ForecastDays>
+      </ ForecastWrapper>
     )
   }
 }
