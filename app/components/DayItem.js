@@ -23,7 +23,6 @@ const Date = styled.h2`
 
 
 
-
 function DayItem(props) {
   var date = getDate(props.day.dt);
   var icon = props.day.weather[0].icon;
