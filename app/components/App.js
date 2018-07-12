@@ -9,6 +9,8 @@ var MainSearch = require('./MainSearch');
 var Forecast = require('./Forecast');
 var Detailed = require('./Detailed');
 
+require.context('../images', true, /\.svg$/);
+
 
 import { injectGlobal } from 'styled-components';
 
