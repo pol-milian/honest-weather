@@ -29,7 +29,7 @@ function DayItem(props) {
   return (
     <DayContainer onClick={props.onClick}>
       <WeatherIcon
-        src={'./app/images/weather-icons/' + icon + '.svg'}
+        src={'/app/images/weather-icons/' + icon + '.svg'}
         alt="Weather"
       />
       <Date>{date}</ Date>
