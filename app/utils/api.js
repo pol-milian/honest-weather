@@ -17,6 +17,9 @@ function prepRouteParams(queryStringData) {
     }).join('&')
 }
 
+
+
+
 function prepUrl(type, queryStringData) {
   return _baseURL + type + '?' + prepRouteParams(queryStringData);
 }
