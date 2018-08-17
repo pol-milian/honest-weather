@@ -7,10 +7,10 @@ A simple weather app built with React. Part of a course on React Fundamentals ta
 ## Built with
 
 - [React](https://github.com/facebook/react) - JS framework for building UI
-- [emotion](https://github.com/emotion-js/emotion) - Style as a function of state
+- [styled-components](https://github.com/styled-components/styled-components) - Style as a function of state
 - [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 - [Webpack](https://github.com/webpack/webpack) - Bundler for JS & others
-- [Netlify]() -
+- [Netlify](https://app.netlify.com/) - Super fast deployments
 
 ## What I learned
 
