@@ -1,29 +1,32 @@
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+let path = require("path");
+let HtmlWebpackPlugin = require("html-webpack-plugin");
 
-var config = {
-  entry: './app/index.js',
+let config = {
+  entry: "./app/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js',
-    publicPath: '/'
+    path: path.resolve(__dirname, "dist"),
+    filename: "index_bundle.js",
+    publicPath: "/"
   },
   module: {
     rules: [
-      { test: /\.(js)$/, use: 'babel-loader' },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      { test: /\.svg$/, use: 'file-loader?name=[name].[ext]&outputPath=images' }
+      { test: /\.(js)$/, use: "babel-loader" },
+      { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: "file-loader?name=[name].[ext]&outputPath=images"
+      }
     ]
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'app/index.html'
+      template: "app/index.html"
     })
   ],
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
+  mode: process.env.NODE_ENV === "production" ? "production" : "development"
 };
 
 module.exports = config;
