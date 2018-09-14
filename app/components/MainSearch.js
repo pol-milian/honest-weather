@@ -1,41 +1,32 @@
-var React = require('react');
-var Search = require('./Search');
-import styled from 'styled-components';
+import styled from "styled-components";
 
-
+const React = require("react");
+const Search = require("./Search");
 
 const Wrapper = styled.div`
-  margin-top: 20vh;
+  margin: 10vh auto;
 `;
 
-const CityPrompt = styled.h1`
+const CityPrompt = styled.p`
   text-align: center;
-  color: white;
-  @media (max-width: 348px) {
-          font-size: 1.1em;
-        }
-
+  font-size: 3.5rem;
+  margin-bottom: 102px;
 `;
 
 function MainSearch(props) {
-
   return (
     <Wrapper>
-      <CityPrompt>Please enter a city:
-      </ CityPrompt>
+      <CityPrompt>What's the weather like in...</CityPrompt>
       <Search
-        onSubmit={function (city) {
+        onSubmit={function(city) {
           props.history.push({
-            pathname: 'forecast',
-            search: '?city=' + city
+            pathname: "forecast",
+            search: `?city=${city}`
           });
-        }} />
-    </ Wrapper>
-  )
+        }}
+      />
+    </Wrapper>
+  );
 }
-
-
-
-
 
 module.exports = MainSearch;
