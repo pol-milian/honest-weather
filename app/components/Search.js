@@ -1,115 +1,87 @@
-var React = require('react');
-import styled from 'styled-components';
+import styled from "styled-components";
+
+const React = require("react");
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-
 `;
 
 const Input = styled.input`
-text-align: justify;
-margin: 0 0.5rem;
-display: block;
-padding: 0.3rem 0.25em;
-border: none;
-border-radius: 0.2em;
-font-size: 1.5em;
-text-align: center;
-box-shadow: 0 0 1em 0.25em rgba(0, 0, 0, 0.2);
+  margin-bottom: 76px;
+  height: 180px;
+  width: 600px;
+  display: block;
+  padding: 0.3rem 0.25em;
+  border: 1px #247ba0;
+  border-radius: 52px;
+  font-size: 5rem;
+  box-shadow: 0 0 1em 0.25em rgba(36, 123, 160, 0.23);
+  &::placeholder {
+    color: #d9d9d9;
+  }
 `;
 
 const SearchButton = styled.button`
-border-radius: 5px;
-padding: 15px 25px;
-font-size: 22px;
-text-decoration: none;
-margin: 1rem auto;
-color: #fff;
-position: relative;
-display: block;
-background-color: #55acee;
-
-  &: active {
-  transform: translate(0px, 5px);
-  -webkit-transform: translate(0px, 5px);
-  box-shadow: 0px 1px 0px 0px;
-}
-  &: hover {
-  background-color: #6FC6FF;
-}
-
+  border-radius: 100px;
+  padding: 2rem;
+  border: none;
+  font-size: 4rem;
+  text-decoration: none;
+  width: 400px;
+  color: #fff;
+  position: relative;
+  display: block;
+  background-color: #70c1b3;
 `;
-
-
-
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      city: ''
-    }
+      city: ""
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    var value = event.target.value;
+    const value = event.target.value;
 
-    this.setState(function () {
-      return {
-        city: value
-      }
-    });
+    this.setState(() => ({
+      city: value
+    }));
   }
-
-
 
   handleSubmit() {
+    this.props.onSubmit(this.state.city);
 
-    this.props.onSubmit(
-      this.state.city
-    );
-
-
-
-    this.setState(function () {
-      return {
-        city: ''
-      }
-    })
+    this.setState(() => ({
+      city: ""
+    }));
   }
-
-  // style = {{ flexDirection: this.props.direction }}
 
   render() {
     return (
-      <Wrapper style={{ flexDirection: this.props.direction }} >
+      <Wrapper style={{ flexDirection: this.props.direction }}>
         <Input
           type="text"
-          placeholder="city"
+          placeholder="your city"
           value={this.state.city}
           onChange={this.handleChange}
           required
         />
 
-        <SearchButton
-          type="button"
-          onClick={this.handleSubmit}>
-          Get forecast
-         </ SearchButton>
-      </ Wrapper>
-    )
+        <SearchButton type="button" onClick={this.handleSubmit}>
+          Search!
+        </SearchButton>
+      </Wrapper>
+    );
   }
 }
-
-
-
-
 
 module.exports = Search;
