@@ -1,10 +1,13 @@
-var React = require('react');
-var DayItem = require('./DayItem')
-import { Link } from 'react-router-dom';
-var queryString = require('query-string');
-var api = require('../utils/api');
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import RainyUmbrella from "../images/rainy_optimized.gif";
+import ErrorDonald from "../images/donald_optimized.gif";
 
+const React = require("react");
+const queryString = require("query-string");
+const DayItem = require("./DayItem");
+
+const api = require("../utils/api");
 
 const ForecastWrapper = styled.div`
   display: flex;
@@ -26,12 +29,42 @@ const ForecastDays = styled.div`
 `;
 
 const ErrorContainer = styled.div`
-  margin: 4rem auto;
-  color: white;
+  margin: 5vh auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
   text-align: center;
 `;
 
+const ImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+`;
 
+const BigImage = styled.img`
+  width: 70vw;
+  border-radius: 50%;
+`;
+
+const ErrorText = styled.p`
+  font-size: 3.5rem;
+`;
+
+const TryButton = styled.button`
+  border-radius: 100px;
+  padding: 2rem;
+  border: none;
+  font-size: 3.5rem;
+  text-decoration: none;
+  width: 400px;
+  color: #fff;
+  position: relative;
+  display: block;
+  background-color: #70c1b3;
+`;
 
 class Forecast extends React.Component {
   constructor(props) {
@@ -40,12 +73,11 @@ class Forecast extends React.Component {
     this.state = {
       forecastData: [],
       loading: true,
-      error: null,
-    }
+      error: null
+    };
     this.makeRequest = this.makeRequest.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
-
 
   componentDidMount() {
     this.city = queryString.parse(this.props.location.search).city;
@@ -58,68 +90,76 @@ class Forecast extends React.Component {
   }
 
   makeRequest(city) {
-    this.setState(function () {
-      return {
-        loading: true
-      }
-    })
+    this.setState(() => ({
+      loading: true
+    }));
 
-    api.getForecast(city)
-      .then(function (res) {
-        this.setState(function () {
-          return {
-            loading: false,
-            forecastData: res,
-            error: null,
-          }
-        })
-      }.bind(this))
-      .catch(function (error) {
-        this.setState(function () {
-          return {
-            error: 'An error has occurred. Please check that the location you wrote is correct.',
-            loading: false,
-          }
-        })
-      }.bind(this));
-
+    api
+      .getForecast(city)
+      .then(res => {
+        this.setState(() => ({
+          loading: false,
+          forecastData: res,
+          error: null
+        }));
+      })
+      .catch(error => {
+        this.setState(() => ({
+          error: "City not found😢",
+          loading: false
+        }));
+      });
   }
 
   handleClick(city) {
     this.props.history.push({
-      pathname: '/detailed/' + this.city,
-      state: city,
-    })
+      pathname: `/detailed/${this.city}`,
+      state: city
+    });
   }
 
-
-
   render() {
-    var error = this.state.error;
+    const error = this.state.error;
     if (this.state.loading === true) {
-      return (<h1>Loading</h1>)
+      return (
+        <ImageWrapper>
+          <BigImage src={RainyUmbrella} alt="Loading" />
+        </ImageWrapper>
+      );
     }
 
     if (error) {
       return (
         <ErrorContainer>
-          <p>{error}</p>
-          <Link to="/">Try searching for another city </ Link>
-
-        </ ErrorContainer>
-      )
+          <ErrorText>{error}</ErrorText>
+          <BigImage src={ErrorDonald} alt="Error" />
+          <ErrorText>
+            Please make sure you typed a valid city. Would you like to try
+            again?
+          </ErrorText>
+          <Link to="/">
+            <TryButton>Try Again!</TryButton>
+          </Link>
+        </ErrorContainer>
+      );
     }
 
     return (
       <ForecastWrapper>
-        <CityName>{(this.city).toUpperCase()}</ CityName>
+        <CityName>{this.city.toUpperCase()}</CityName>
         <ForecastDays>
-          {this.state.forecastData.list.map(function (listItem) {
-            return <DayItem onClick={this.handleClick.bind(this, listItem)} key={listItem.dt} day={listItem} />
+          {this.state.forecastData.list.map(function(listItem) {
+            return (
+              <DayItem
+                onClick={this.handleClick.bind(this, listItem)}
+                key={listItem.dt}
+                day={listItem}
+              />
+            );
           }, this)}
-        </ ForecastDays>
-      </ ForecastWrapper>
-    )
+        </ForecastDays>
+      </ForecastWrapper>
+    );
   }
 }
 
