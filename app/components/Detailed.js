@@ -27,7 +27,7 @@ const DayWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
-  margin-top: 4rem;
+  margin: 4rem auto;
 `;
 
 const InfoWrapper = styled.div`
