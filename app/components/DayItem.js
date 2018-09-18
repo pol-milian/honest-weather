@@ -1,8 +1,9 @@
-var React = require('react');
-var utils = require('../utils/helpers');
-var getDate = utils.getDate;
-import styled from 'styled-components';
+import styled from "styled-components";
 
+const React = require("react");
+const utils = require("../utils/helpers");
+
+const getDate = utils.getDate;
 
 const DayContainer = styled.div`
   display: flex;
@@ -13,34 +14,23 @@ const DayContainer = styled.div`
 `;
 
 const WeatherIcon = styled.img`
-  width: 5rem;
+  width: 300px;
   height: auto;
 `;
 const Date = styled.h2`
-  color: #338b90;
-  
+  font-size: 3rem;
+  font-weight: 500;
 `;
 
-
-
 function DayItem(props) {
-  var date = getDate(props.day.dt);
-  var icon = props.day.weather[0].icon;
+  const date = getDate(props.day.dt);
+  const icon = props.day.weather[0].icon;
   return (
     <DayContainer onClick={props.onClick}>
-      <WeatherIcon
-        src={'/images/' + icon + '.svg'}
-        alt="Weather"
-      />
-      <Date>{date}</ Date>
-    </ DayContainer>
-  )
+      <WeatherIcon src={`/images/${icon}.svg`} alt="Weather" />
+      <Date>{date}</Date>
+    </DayContainer>
+  );
 }
-
-
-
-
-
-
 
 module.exports = DayItem;
