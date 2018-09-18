@@ -11,7 +11,7 @@ const Navbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 180px;
+  height: auto;
   padding: 0 1rem;
 `;
 const HeaderIcon = styled.img`
