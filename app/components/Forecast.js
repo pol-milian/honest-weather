@@ -16,20 +16,20 @@ const ForecastWrapper = styled.div`
 
 const CityName = styled.h1`
   text-align: center;
-  color: #338b90;
   display: block;
+  font-size: 5rem;
 `;
 
 const ForecastDays = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: auto;
 `;
 
 const ErrorContainer = styled.div`
-  margin: 5vh auto;
+  margin: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +50,11 @@ const BigImage = styled.img`
 `;
 
 const ErrorText = styled.p`
-  font-size: 3.5rem;
+  font-size: 3rem;
+`;
+
+const ErrorHeader = styled.h1`
+  font-size: 5rem;
 `;
 
 const TryButton = styled.button`
@@ -131,7 +135,7 @@ class Forecast extends React.Component {
     if (error) {
       return (
         <ErrorContainer>
-          <ErrorText>{error}</ErrorText>
+          <ErrorHeader>{error}</ErrorHeader>
           <BigImage src={ErrorDonald} alt="Error" />
           <ErrorText>
             Please make sure you typed a valid city. Would you like to try
