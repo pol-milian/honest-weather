@@ -29,7 +29,7 @@ const ForecastDays = styled.div`
 `;
 
 const ErrorContainer = styled.div`
-  margin: 5vh;
+  margin: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,6 +47,10 @@ const ImageWrapper = styled.div`
 const BigImage = styled.img`
   width: 70vw;
   border-radius: 50%;
+  margin-top: 2rem;
+  @media (min-width: 768px) {
+    width: 40vw;
+  }
 `;
 
 const ErrorText = styled.p`
@@ -55,6 +59,7 @@ const ErrorText = styled.p`
 
 const ErrorHeader = styled.h1`
   font-size: 5rem;
+  margin: 0;
 `;
 
 const TryButton = styled.button`
