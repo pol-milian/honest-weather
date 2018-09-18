@@ -34,7 +34,7 @@ const SearchButton = styled.button`
   color: #fff;
   position: relative;
   display: block;
-  background-color: #70c1b3;
+  background-color: var(--turquoise);
 `;
 
 class Search extends React.Component {
