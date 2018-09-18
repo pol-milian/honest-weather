@@ -1,46 +1,31 @@
-var React = require('react');
-var Search = require('./Search');
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import ReactLogo from "../images/react.png";
 
+const React = require("react");
 
-
-const Navbar = styled.div`
-  background-color: red;
+const Navbar = styled.nav`
+  background-color: var(--blue);
   z-index: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 10%;
+  height: 180px;
   padding: 0 1rem;
 `;
-const HeaderText = styled.h3`
-  margin: 0.3rem;
-  color: white;
-  
+const HeaderIcon = styled.img`
+  width: 160px;
 `;
-
-
-
 
 function Header(props) {
   return (
     <Navbar>
       <Link to="/">
-        <HeaderText>Another React Weather App</ HeaderText>
-      </ Link>
-      <Search direction='row'
-        onSubmit={function (city) {
-          props.history.push({
-            pathname: '/forecast',
-            search: '?city=' + city
-          });
-        }} />
-    </ Navbar>
-  )
+        <HeaderIcon src={ReactLogo} />
+      </Link>
+    </Navbar>
+  );
 }
-
-
 
 module.exports = Header;
