@@ -15,6 +15,12 @@ const Detailed = require("./Detailed");
 require.context("../images", true, /\.svg$/);
 
 injectGlobal`
+  :root {
+    --black: #707070;
+    --blue: #247ba0;
+    --turquoise: #70c1b3;
+    
+  }
   * {
     box-sizing: border-box;
   }
@@ -31,7 +37,7 @@ injectGlobal`
   body {
     position: relative;
     margin: 0;
-    color: #707070;
+    color: var(--black);
   }
   a {
     text-decoration: none;
