@@ -3,7 +3,7 @@ import styled from "styled-components";
 const React = require("react");
 const utils = require("../utils/helpers");
 
-const getDate = utils.getDate;
+const { getDate } = utils;
 
 const DayContainer = styled.div`
   display: flex;
