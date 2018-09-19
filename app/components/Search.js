@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 const Input = styled.input`
   margin-bottom: 76px;
   height: 180px;
+  color: var(--black);
   width: 600px;
   display: block;
   padding: 0.3rem 0.25em;
