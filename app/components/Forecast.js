@@ -51,6 +51,9 @@ const BigImage = styled.img`
   @media (min-width: 768px) {
     width: 40vw;
   }
+  @media (min-width: 992px) {
+    width: 30vw;
+  }
 `;
 
 const ErrorText = styled.p`
