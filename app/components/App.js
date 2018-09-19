@@ -3,9 +3,7 @@ import { injectGlobal } from "styled-components";
 const React = require("react");
 const ReactRouter = require("react-router-dom");
 
-const BrowserRouter = ReactRouter.BrowserRouter;
-const Route = ReactRouter.Route;
-const Switch = ReactRouter.Switch;
+const { BrowserRouter, Route } = ReactRouter;
 
 const Header = require("./Header");
 const MainSearch = require("./MainSearch");
@@ -44,21 +42,16 @@ injectGlobal`
   }
 `;
 
+const App = () => (
+  <BrowserRouter>
+    <div>
+      <Route render={Header} />
+      <Route exact path="/" render={MainSearch} />
+      <Route path="/forecast" component={Forecast} />
 
-class App extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <div>
-          <Route render={Header} />
-          <Route exact path="/" render={MainSearch} />
-          <Route path="/forecast" component={Forecast} />
-
-          <Route path="/detailed/:city" component={Detailed} />
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+      <Route path="/detailed/:city" component={Detailed} />
+    </div>
+  </BrowserRouter>
+);
 
 module.exports = App;
