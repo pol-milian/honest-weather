@@ -80,7 +80,7 @@ const TryButton = styled.button`
   background-color: #70c1b3;
 `;
 
-class Forecast extends React.Component {
+export default class Forecast extends React.Component {
   constructor(props) {
     super(props);
 
@@ -133,8 +133,8 @@ class Forecast extends React.Component {
   }
 
   render() {
-    const error = this.state.error;
-    if (this.state.loading === true) {
+    const { error, loading, forecastData } = this.state;
+    if (loading === true) {
       return (
         <ImageWrapper>
           <BigImage src={RainyUmbrella} alt="Loading" />
@@ -162,7 +162,7 @@ class Forecast extends React.Component {
       <ForecastWrapper>
         <CityName>{this.city.toUpperCase()}</CityName>
         <ForecastDays>
-          {this.state.forecastData.list.map(function(listItem) {
+          {forecastData.list.map(function(listItem) {
             return (
               <DayItem
                 onClick={this.handleClick.bind(this, listItem)}
@@ -176,5 +176,3 @@ class Forecast extends React.Component {
     );
   }
 }
-
-module.exports = Forecast;
