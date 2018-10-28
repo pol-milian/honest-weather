@@ -51,7 +51,7 @@ class Search extends React.Component {
   }
 
   handleChange(event) {
-    const value = event.target.value;
+    const { value } = event.target;
 
     this.setState(() => ({
       city: value
@@ -74,6 +74,11 @@ class Search extends React.Component {
           placeholder="your city"
           value={this.state.city}
           onChange={this.handleChange}
+          onKeyPress={event => {
+            if (event.key === "Enter") {
+              this.handleSubmit();
+            }
+          }}
           required
         />
 
