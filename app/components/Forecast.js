@@ -45,11 +45,13 @@ const ImageWrapper = styled.div`
 `;
 
 const BigImage = styled.img`
-  width: 70vw;
   border-radius: 50%;
   margin-top: 2rem;
   @media (min-width: 768px) {
     width: 40vw;
+  }
+  @media (min-width: 1px) and (max-width: 767px) {
+    width: 70vw;
   }
   @media (min-width: 992px) {
     width: 30vw;
@@ -110,7 +112,7 @@ class Forecast extends React.Component {
       .getForecast(city)
       .then(res => {
         this.setState(() => ({
-          loading: false,
+          loading: true,
           forecastData: res,
           error: null
         }));
