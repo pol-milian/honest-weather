@@ -1,14 +1,13 @@
 import { injectGlobal } from "styled-components";
 
-const React = require("react");
-const ReactRouter = require("react-router-dom");
+import React from "react";
 
-const { BrowserRouter, Route } = ReactRouter;
+import { BrowserRouter, Route } from "react-router-dom";
 
-const Header = require("./Header");
-const MainSearch = require("./MainSearch");
-const Forecast = require("./Forecast");
-const Detailed = require("./Detailed");
+import Header from "./Header";
+import MainSearch from "./MainSearch";
+import Forecast from "./Forecast";
+import Detailed from "./Detailed";
 
 require.context("../images", true, /\.svg$/);
 
