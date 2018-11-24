@@ -1,7 +1,7 @@
-let path = require("path");
-let HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-let config = {
+const config = {
   entry: "./app/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
