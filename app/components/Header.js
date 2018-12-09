@@ -1,8 +1,8 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ReactLogo from "../images/react.png";
 
-const React = require("react");
 
 const Navbar = styled.nav`
   background-color: var(--blue);

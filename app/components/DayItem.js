@@ -1,9 +1,8 @@
+import React from "react";
+
 import styled from "styled-components";
 
-const React = require("react");
-const utils = require("../utils/helpers");
-
-const { getDate } = utils;
+import { getDate } from "../utils/helpers";
 
 const DayContainer = styled.div`
   display: flex;
@@ -24,7 +23,7 @@ const Date = styled.h2`
 
 function DayItem(props) {
   const date = getDate(props.day.dt);
-  const icon = props.day.weather[0].icon;
+  const { icon } = props.day.weather[0];
   return (
     <DayContainer onClick={props.onClick}>
       <WeatherIcon src={`/images/${icon}.svg`} alt="Weather" />
