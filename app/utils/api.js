@@ -1,51 +1,45 @@
-let axios = require("axios");
+const axios = require("axios");
 
 // Endpoints
 // current weather: http://api.openweathermap.org/data/2.5/weather?q= + city + &type=accurate&APPID= + apiKey
 //  5 day forecast: http://api.openweathermap.org/data/2.5/forecast/daily?q= + city + &type=accurate&APPID= + apiKey + cnt=5
 
-let _baseURL =
+const baseURL =
   "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/";
 // var _APIKEY = '95178118537bc15219a1ca0bc686f692';
-let _APIKEY = "b714ec74bbab5650795063cb0fdf5fbe";
+const APIKEY = "b714ec74bbab5650795063cb0fdf5fbe";
 
 function prepRouteParams(queryStringData) {
   return Object.keys(queryStringData)
-    .map((key) => {
-      return key + '=' + encodeURIComponent(queryStringData[key]);
-    })
+    .map(key => `${key}=${encodeURIComponent(queryStringData[key])}`)
     .join("&");
 }
 
 function prepUrl(type, queryStringData) {
-  return `${_baseURL + type  }?${  prepRouteParams(queryStringData)}`;
+  return `${baseURL + type}?${prepRouteParams(queryStringData)}`;
 }
 
 function getQueryStringData(city) {
   return {
     q: city,
     type: "accurate",
-    APPID: _APIKEY,
+    APPID: APIKEY,
     cnt: 5
   };
 }
 
 function getCurrentWeather(city) {
-  let queryStringData = getQueryStringData(city);
-  let url = prepUrl("weather", queryStringData);
+  const queryStringData = getQueryStringData(city);
+  const url = prepUrl("weather", queryStringData);
 
-  return axios.get(url).then(function(currentWeatherData) {
-    return currentWeatherData.data;
-  });
+  return axios.get(url).then(currentWeatherData => currentWeatherData.data);
 }
 
 function getForecast(city) {
-  let queryStringData = getQueryStringData(city);
-  let url = prepUrl("forecast/daily", queryStringData);
+  const queryStringData = getQueryStringData(city);
+  const url = prepUrl("forecast/daily", queryStringData);
 
-  return axios.get(url).then(function(forecastData) {
-    return forecastData.data;
-  });
+  return axios.get(url).then(forecastData => forecastData.data);
 }
 
 module.exports = {
