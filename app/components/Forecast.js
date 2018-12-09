@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-// import RainyUmbrella from "../images/rainy_optimized.gif";
-// import ErrorDonald from "../images/donald_optimized.gif";
-import { Planet } from "react-kawaii";
+// import { Planet } from "react-kawaii";
+import KawaiiAnimated from "./KawaiiAnimated";
 
 const React = require("react");
 const queryString = require("query-string");
@@ -39,25 +38,11 @@ const ErrorContainer = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
   height: 80vh;
 `;
-
-// const BigImage = styled.img`
-//   border-radius: 50%;
-//   margin-top: 2rem;
-//   @media (min-width: 768px) {
-//     width: 40vw;
-//   }
-//   @media (min-width: 1px) and (max-width: 767px) {
-//     width: 70vw;
-//   }
-//   @media (min-width: 992px) {
-//     width: 30vw;
-//   }
-// `;
 
 const ErrorText = styled.p`
   font-size: 3rem;
@@ -113,7 +98,8 @@ export default class Forecast extends React.Component {
       .getForecast(city)
       .then(res => {
         this.setState(() => ({
-          loading: false,
+          // FIXME: REMEMBER TO CHANGE TO 'FALSE' FOR PROD
+          loading: true,
           forecastData: res,
           error: null
         }));
@@ -138,7 +124,7 @@ export default class Forecast extends React.Component {
     if (loading === true) {
       return (
         <ImageWrapper>
-          <Planet size={200} mood="blissful" color="#FDA7DC" />
+          <KawaiiAnimated />
         </ImageWrapper>
       );
     }
@@ -147,7 +133,9 @@ export default class Forecast extends React.Component {
       return (
         <ErrorContainer>
           <ErrorHeader>{error}</ErrorHeader>
-          {/* <BigImage src={ErrorDonald} alt="Error" /> */}
+          <ImageWrapper>
+            <Planet size={200} mood="sad" color="#FDA7DC" />
+          </ImageWrapper>
           <ErrorText>
             Please make sure you typed a valid city. Would you like to try
             again?
