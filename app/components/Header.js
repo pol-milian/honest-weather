@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ReactLogo from "../images/react.png";
-
 
 const Navbar = styled.nav`
   background-color: var(--blue);
@@ -14,15 +12,12 @@ const Navbar = styled.nav`
   height: auto;
   padding: 0 1rem;
 `;
-const HeaderIcon = styled.img`
-  width: 160px;
-`;
 
-function Header(props) {
+function Header() {
   return (
     <Navbar>
       <Link to="/">
-        <HeaderIcon src={ReactLogo} />
+        <h1>Search</h1>
       </Link>
     </Navbar>
   );
