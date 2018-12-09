@@ -113,7 +113,7 @@ export default class Forecast extends React.Component {
       .getForecast(city)
       .then(res => {
         this.setState(() => ({
-          loading: true,
+          loading: false,
           forecastData: res,
           error: null
         }));
