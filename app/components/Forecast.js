@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import RainyUmbrella from "../images/rainy_optimized.gif";
-import ErrorDonald from "../images/donald_optimized.gif";
+// import RainyUmbrella from "../images/rainy_optimized.gif";
+// import ErrorDonald from "../images/donald_optimized.gif";
+import { Planet } from "react-kawaii";
 
 const React = require("react");
 const queryString = require("query-string");
@@ -44,19 +45,19 @@ const ImageWrapper = styled.div`
   height: 80vh;
 `;
 
-const BigImage = styled.img`
-  border-radius: 50%;
-  margin-top: 2rem;
-  @media (min-width: 768px) {
-    width: 40vw;
-  }
-  @media (min-width: 1px) and (max-width: 767px) {
-    width: 70vw;
-  }
-  @media (min-width: 992px) {
-    width: 30vw;
-  }
-`;
+// const BigImage = styled.img`
+//   border-radius: 50%;
+//   margin-top: 2rem;
+//   @media (min-width: 768px) {
+//     width: 40vw;
+//   }
+//   @media (min-width: 1px) and (max-width: 767px) {
+//     width: 70vw;
+//   }
+//   @media (min-width: 992px) {
+//     width: 30vw;
+//   }
+// `;
 
 const ErrorText = styled.p`
   font-size: 3rem;
@@ -137,7 +138,7 @@ export default class Forecast extends React.Component {
     if (loading === true) {
       return (
         <ImageWrapper>
-          <BigImage src={RainyUmbrella} alt="Loading" />
+          <Planet size={200} mood="blissful" color="#FDA7DC" />
         </ImageWrapper>
       );
     }
@@ -146,7 +147,7 @@ export default class Forecast extends React.Component {
       return (
         <ErrorContainer>
           <ErrorHeader>{error}</ErrorHeader>
-          <BigImage src={ErrorDonald} alt="Error" />
+          {/* <BigImage src={ErrorDonald} alt="Error" /> */}
           <ErrorText>
             Please make sure you typed a valid city. Would you like to try
             again?
