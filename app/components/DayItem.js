@@ -32,4 +32,4 @@ function DayItem(props) {
   );
 }
 
-module.exports = DayItem;
+export default DayItem;

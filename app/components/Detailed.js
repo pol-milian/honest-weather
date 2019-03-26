@@ -1,12 +1,7 @@
+import React from "react";
 import styled from "styled-components";
-
-const ReactRouter = require("react-router-dom");
-
-const Link = ReactRouter.Link;
-
-const React = require("react");
-const DayItem = require("./DayItem");
-const convertTemp = require("../utils/helpers").convertTemp;
+import DayItem from "./DayItem";
+import { convertTemp } from "../utils/helpers";
 
 const BackButton = styled.button`
   margin: auto;
@@ -51,7 +46,7 @@ const MaxTemp = styled.span`
 class Detailed extends React.Component {
   render() {
     const props = this.props.location.state;
-    const generalForecast = props.weather[0].description;
+    const { description } = props.weather[0];
     const minDeg = convertTemp(props.temp.min);
     const maxDeg = convertTemp(props.temp.max);
     return (
@@ -59,8 +54,8 @@ class Detailed extends React.Component {
         <DayItem day={props} />
         <InfoWrapper>
           <WeatherReport>
-            <strong>{generalForecast}</strong> for today. The lowest temperature
-            is <MinTemp>{minDeg} C</MinTemp> and the maximum is{" "}
+            <strong>{description}</strong> for today. The lowest temperature is{" "}
+            <MinTemp>{minDeg} C</MinTemp> and the maximum is{" "}
             <MaxTemp>{maxDeg} C</MaxTemp>.
           </WeatherReport>
         </InfoWrapper>
@@ -72,4 +67,4 @@ class Detailed extends React.Component {
   }
 }
 
-module.exports = Detailed;
+export default Detailed;

@@ -1,6 +1,5 @@
+import React from "react";
 import styled from "styled-components";
-
-const React = require("react");
 
 const Wrapper = styled.div`
   display: flex;
@@ -90,4 +89,4 @@ class Search extends React.Component {
   }
 }
 
-module.exports = Search;
+export default Search;

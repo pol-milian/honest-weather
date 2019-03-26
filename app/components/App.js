@@ -5,7 +5,7 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Header from "./Header";
-import MainSearch from "./MainSearch";
+import MainSearch from "./Main";
 import Forecast from "./Forecast";
 import Detailed from "./Detailed";
 
@@ -47,7 +47,6 @@ const App = () => (
       <Route render={Header} />
       <Route exact path="/" render={MainSearch} />
       <Route path="/forecast" component={Forecast} />
-
       <Route path="/detailed/:city" component={Detailed} />
     </div>
   </BrowserRouter>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-// import { Planet } from "react-kawaii";
+import { Planet } from "react-kawaii";
 import KawaiiAnimated from "./KawaiiAnimated";
 
 const React = require("react");
@@ -41,7 +41,8 @@ const ImageWrapper = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 100vh;
+  width: 100vw;
 `;
 
 const ErrorText = styled.p`
@@ -66,7 +67,7 @@ const TryButton = styled.button`
   background-color: #70c1b3;
 `;
 
-export default class Forecast extends React.Component {
+class Forecast extends React.Component {
   constructor(props) {
     super(props);
 
@@ -165,3 +166,5 @@ export default class Forecast extends React.Component {
     );
   }
 }
+
+export default Forecast;

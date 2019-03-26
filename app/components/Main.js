@@ -13,7 +13,7 @@ const CityPrompt = styled.p`
   margin-bottom: 102px;
 `;
 
-function MainSearch(props) {
+function Main(props) {
   return (
     <Wrapper>
       <CityPrompt>What's the weather like in...</CityPrompt>
@@ -28,5 +28,4 @@ function MainSearch(props) {
     </Wrapper>
   );
 }
-
-module.exports = MainSearch;
+export default Main;

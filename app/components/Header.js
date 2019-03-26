@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Navbar = styled.nav`
-  background-color: var(--blue);
   z-index: 0;
   display: flex;
   justify-content: space-between;
@@ -17,10 +16,10 @@ function Header() {
   return (
     <Navbar>
       <Link to="/">
-        <h1>Search</h1>
+        <h1>Home</h1>
       </Link>
     </Navbar>
   );
 }
 
-module.exports = Header;
+export default Header;
