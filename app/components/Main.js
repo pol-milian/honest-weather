@@ -3,10 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import Search from "./Search";
 
-const Wrapper = styled.div`
-  margin: 10vh auto;
-`;
-
 const CityPrompt = styled.p`
   text-align: center;
   font-size: 3.5rem;
@@ -15,14 +11,14 @@ const CityPrompt = styled.p`
 
 function Main(props) {
   return (
-    <Wrapper>
+    <section>
       <CityPrompt>What is the weather like in...</CityPrompt>
       <Search
         onSubmit={function(city) {
           navigate(`/forecast?city=${city}`);
         }}
       />
-    </Wrapper>
+    </section>
   );
 }
 export default Main;

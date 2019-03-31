@@ -17,7 +17,7 @@ const Input = styled.input`
   padding: 0.3rem 0.25em;
   border: 1px #247ba0;
   border-radius: 52px;
-  font-size: 5rem;
+  font-size: 4rem;
   box-shadow: 0 0 1em 0.25em rgba(36, 123, 160, 0.23);
   &::placeholder {
     color: #d9d9d9;

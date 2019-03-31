@@ -27,7 +27,7 @@ const ForecastDays = styled.div`
 `;
 
 const ErrorContainer = styled.div`
-  margin: 10vh;
+  margin: 10vh auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,8 +39,6 @@ const ImageWrapper = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
 `;
 
 const ErrorText = styled.p`
