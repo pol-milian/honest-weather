@@ -59,9 +59,7 @@ class Detailed extends React.Component {
             <MaxTemp>{maxDeg} C</MaxTemp>.
           </WeatherReport>
         </InfoWrapper>
-        <BackButton onClick={() => this.props.history.goBack()}>
-          Go Back
-        </BackButton>
+        <BackButton onClick={() => window.history.back()}>Go Back</BackButton>
       </DayWrapper>
     );
   }

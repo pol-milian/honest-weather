@@ -1,17 +1,17 @@
-import { injectGlobal } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 import React from "react";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router } from "@reach/router";
 
 import Header from "./Header";
-import MainSearch from "./Main";
+import Main from "./Main";
 import Forecast from "./Forecast";
 import Detailed from "./Detailed";
 
 require.context("../images", true, /\.svg$/);
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   :root {
     --black: #707070;
     --blue: #247ba0;
@@ -32,7 +32,6 @@ injectGlobal`
     
   }
   body {
-    position: relative;
     margin: 0;
     color: var(--black);
   }
@@ -42,14 +41,15 @@ injectGlobal`
 `;
 
 const App = () => (
-  <BrowserRouter>
-    <div>
-      <Route render={Header} />
-      <Route exact path="/" render={MainSearch} />
-      <Route path="/forecast" component={Forecast} />
-      <Route path="/detailed/:city" component={Detailed} />
-    </div>
-  </BrowserRouter>
+  <div>
+    <GlobalStyle />
+    <Header />
+    <Router>
+      <Main path="/" />
+      <Forecast path="/forecast" />
+      <Detailed path="/detailed/:city" />
+    </Router>
+  </div>
 );
 
-module.exports = App;
+export default App;

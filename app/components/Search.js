@@ -66,12 +66,14 @@ class Search extends React.Component {
   }
 
   render() {
+    const { city } = this.state;
+    const { direction } = this.props;
     return (
-      <Wrapper style={{ flexDirection: this.props.direction }}>
+      <Wrapper style={{ flexDirection: direction }}>
         <Input
           type="text"
-          placeholder="your city"
-          value={this.state.city}
+          placeholder="your shitty city"
+          value={city}
           onChange={this.handleChange}
           onKeyPress={event => {
             if (event.key === "Enter") {

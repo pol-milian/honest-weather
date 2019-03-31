@@ -1,7 +1,7 @@
+import { Link, navigate } from "@reach/router";
+import React from "react";
 import styled from "styled-components";
-
-const React = require("react");
-const Search = require("./Search");
+import Search from "./Search";
 
 const Wrapper = styled.div`
   margin: 10vh auto;
@@ -16,13 +16,10 @@ const CityPrompt = styled.p`
 function Main(props) {
   return (
     <Wrapper>
-      <CityPrompt>What's the weather like in...</CityPrompt>
+      <CityPrompt>What is the weather like in...</CityPrompt>
       <Search
         onSubmit={function(city) {
-          props.history.push({
-            pathname: "forecast",
-            search: `?city=${city}`
-          });
+          navigate(`/forecast?city=${city}`);
         }}
       />
     </Wrapper>

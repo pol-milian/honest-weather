@@ -1,13 +1,11 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import queryString from "query-string";
+import { Link, navigate } from "@reach/router";
 import styled from "styled-components";
 import { Planet } from "react-kawaii";
+import DayItem from "./DayItem";
 import KawaiiAnimated from "./KawaiiAnimated";
-
-const React = require("react");
-const queryString = require("query-string");
-const DayItem = require("./DayItem");
-
-const api = require("../utils/api");
+import api from "../utils/api";
 
 const ForecastWrapper = styled.div`
   display: flex;
@@ -100,7 +98,7 @@ class Forecast extends React.Component {
       .then(res => {
         this.setState(() => ({
           // FIXME: REMEMBER TO CHANGE TO 'FALSE' FOR PROD
-          loading: true,
+          loading: false,
           forecastData: res,
           error: null
         }));
@@ -114,10 +112,7 @@ class Forecast extends React.Component {
   }
 
   handleClick(city) {
-    this.props.history.push({
-      pathname: `/detailed/${this.city}`,
-      state: city
-    });
+    navigate(`/detailed/${this.city}`, { state: city });
   }
 
   render() {
