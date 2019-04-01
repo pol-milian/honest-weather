@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-
 import React from "react";
-
 import { Router } from "@reach/router";
-
 import Header from "./Header";
 import Main from "./Main";
 import Forecast from "./Forecast";

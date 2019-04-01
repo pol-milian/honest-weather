@@ -7,7 +7,7 @@ import DayItem from "./DayItem";
 import KawaiiAnimated from "./KawaiiAnimated";
 import api from "../utils/api";
 
-const ForecastWrapper = styled.div`
+const ForecastWrapper = styled.main`
   display: flex;
   flex-direction: column;
 `;
@@ -18,7 +18,7 @@ const CityName = styled.h1`
   font-size: 5rem;
 `;
 
-const ForecastDays = styled.div`
+const ForecastDays = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
