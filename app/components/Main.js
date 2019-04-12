@@ -9,16 +9,19 @@ const CityPrompt = styled.p`
   margin-bottom: 102px;
 `;
 
+const MainWrapper = styled.main`
+  margin: 10vh auto;
+`;
 function Main(props) {
   return (
-    <section>
+    <MainWrapper>
       <CityPrompt>What is the weather like in...</CityPrompt>
       <Search
         onSubmit={function(city) {
           navigate(`/forecast?city=${city}`);
         }}
       />
-    </section>
+    </MainWrapper>
   );
 }
 export default Main;
