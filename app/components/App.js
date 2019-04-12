@@ -4,7 +4,7 @@ import { Router } from "@reach/router";
 import Header from "./Header";
 import Main from "./Main";
 import Forecast from "./Forecast";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import Detailed from "./Detailed";
 
 require.context("../images", true, /\.svg$/);
@@ -48,7 +48,7 @@ const App = () => (
       <Forecast path="/forecast" />
       <Detailed path="/detailed/:city" />
     </Router>
-    <Footer />
+    {/* <Footer /> */}
   </div>
 );
 
