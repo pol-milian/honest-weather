@@ -123,7 +123,15 @@ class KawaiiAnimation extends Component {
   render() {
     return (
       <div ref={this.ghostRef}>
-        <Planet color="blue" />
+        <Planet size="300" color="blue" />
+        <h1
+          css="
+            text-align: center;
+            padding-top: 1rem;
+          "
+        >
+          Patience...{" "}
+        </h1>
       </div>
     );
   }
