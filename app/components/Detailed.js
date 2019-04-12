@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import DayItem from "./DayItem";
 import { convertTemp } from "../utils/helpers";
+import honestText from "../utils/honestText";
 
 const BackButton = styled.button`
   margin: auto;
@@ -46,15 +47,16 @@ const MaxTemp = styled.span`
 class Detailed extends React.Component {
   render() {
     const props = this.props.location.state;
-    const { description } = props.weather[0];
+    const { id } = props.weather[0];
     const minDeg = convertTemp(props.temp.min);
     const maxDeg = convertTemp(props.temp.max);
+
     return (
       <DayWrapper>
         <DayItem day={props} />
         <InfoWrapper>
           <WeatherReport>
-            <strong>{description}</strong> for today. The lowest temperature is{" "}
+            <strong>{honestText(id)}</strong> The lowest temperature is{" "}
             <MinTemp>{minDeg} C</MinTemp> and the maximum is{" "}
             <MaxTemp>{maxDeg} C</MaxTemp>.
           </WeatherReport>
