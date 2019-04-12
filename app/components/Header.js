@@ -7,6 +7,9 @@ const Navbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
+  a {
+    color: var(--blue);
+  }
 `;
 
 function Header() {

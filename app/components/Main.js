@@ -10,7 +10,7 @@ const CityPrompt = styled.p`
 `;
 
 const MainWrapper = styled.main`
-  margin: 10vh auto;
+  margin: var(--generalMargin);
 `;
 function Main(props) {
   return (

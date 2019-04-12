@@ -4,6 +4,7 @@ import { Router } from "@reach/router";
 import Header from "./Header";
 import Main from "./Main";
 import Forecast from "./Forecast";
+import Footer from "./Footer";
 import Detailed from "./Detailed";
 
 require.context("../images", true, /\.svg$/);
@@ -13,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     --black: #707070;
     --blue: #247ba0;
     --turquoise: #70c1b3;
+    --generalMargin: 10vh auto;
     
   }
   * {
@@ -46,6 +48,7 @@ const App = () => (
       <Forecast path="/forecast" />
       <Detailed path="/detailed/:city" />
     </Router>
+    <Footer />
   </div>
 );
 
