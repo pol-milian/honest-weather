@@ -103,7 +103,7 @@ class Forecast extends React.Component {
       })
       .catch(error => {
         this.setState(() => ({
-          error: "City not found😢",
+          error: "City not found",
           loading: false
         }));
       });
@@ -117,7 +117,11 @@ class Forecast extends React.Component {
     const { error, loading, forecastData } = this.state;
     if (loading === true) {
       return (
-        <ImageWrapper>
+        <ImageWrapper
+          css="
+            height: 80vh;
+          "
+        >
           <KawaiiAnimated />
         </ImageWrapper>
       );
@@ -131,8 +135,9 @@ class Forecast extends React.Component {
             <Planet size={200} mood="sad" color="#FDA7DC" />
           </ImageWrapper>
           <ErrorText>
-            Please make sure you typed a valid city. Would you like to try
-            again?
+            Do yourself a favor and{" "}
+            <strong>stop eating chips while typing.</strong> Wash your hands and
+            try again?
           </ErrorText>
           <Link to="/">
             <TryButton>Try Again!</TryButton>
