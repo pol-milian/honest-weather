@@ -6,11 +6,10 @@ import Search from "./Search";
 const CityPrompt = styled.p`
   text-align: center;
   font-size: 3.5rem;
-  margin-bottom: 102px;
 `;
 
 const MainWrapper = styled.main`
-  margin: var(--generalMargin);
+  margin: 0;
 `;
 function Main(props) {
   return (

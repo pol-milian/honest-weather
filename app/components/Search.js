@@ -6,11 +6,12 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
+  margin: 6rem 0;
 `;
 
 const Input = styled.input`
-  margin-bottom: 76px;
   height: 180px;
+  margin-bottom: 3rem;
   color: var(--black);
   width: 600px;
   display: block;
@@ -72,7 +73,7 @@ class Search extends React.Component {
       <Wrapper style={{ flexDirection: direction }}>
         <Input
           type="text"
-          placeholder="your shitty city"
+          placeholder="your shitty city 💩"
           value={city}
           onChange={this.handleChange}
           onKeyPress={event => {
