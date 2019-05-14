@@ -27,11 +27,11 @@ const GlobalStyle = createGlobalStyle`
       Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
       "Helvetica Neue", Arial, sans-serif,
       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 1.2rem;  
-    
   }
   body {
-    margin: 0;
+    max-width: 38rem;
+    padding: 2rem;
+    margin: auto;
     color: var(--black);
   }
   a {
