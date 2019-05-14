@@ -10,18 +10,34 @@ const Navbar = styled.nav`
   a {
     color: var(--blue);
   }
+  #emojis {
+    &:hover {
+      font-size: 6rem;
+      transition: all 0.5s ease-in;
+    }
+    transition: all 0.5s ease-in;
+  }
 `;
 
 function Header() {
   return (
     <Navbar>
-      <Link to="/">
+      <Link
+        css="
+            margin: auto;
+          "
+        to="/"
+      >
         <h1
           css="
             display: inline-block;
           "
         >
-          <span role="img" aria-label="middle finger and rain emoji">
+          <span
+            id="emojis"
+            role="img"
+            aria-label="middle finger and rain emoji"
+          >
             🖕🌧️
           </span>{" "}
           Honest Weather
