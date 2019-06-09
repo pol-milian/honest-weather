@@ -1,4 +1,8 @@
-const daysMap = {
+interface dayOrMonthObject {
+  [key: string]: string
+}
+
+const daysMap: dayOrMonthObject = {
   "0": "Sunday",
   "1": "Monday",
   "2": "Tuesday",
@@ -8,7 +12,7 @@ const daysMap = {
   "6": "Saturday"
 };
 
-const monthsMap = {
+const monthsMap: dayOrMonthObject = {
   "0": "Jan",
   "1": "Feb",
   "2": "Mar",
@@ -23,11 +27,12 @@ const monthsMap = {
   "11": "Dec"
 };
 
-export function convertTemp(kelvin) {
-  return parseInt(kelvin - 273.15, 10);
+export function convertTemp(kelvin: string): number {
+  return Math.round(Number(kelvin) - 273.15);
 }
 
-export function getDate(unixTimestmap) {
+
+export function getDate(unixTimestmap: number): string {
   const date = new Date(unixTimestmap * 1000);
   const day = daysMap[date.getDay()];
   const month = `${monthsMap[date.getMonth()]} ${date.getDate()}`;

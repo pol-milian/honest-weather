@@ -21,12 +21,23 @@ const Date = styled.h2`
   font-weight: 500;
 `;
 
-function DayItem(props) {
+
+export interface DayItemProps {
+  day: {
+    dt: number,
+    weather: {
+      icon: string
+    }[],
+  },
+  onClick?(event: any): void;
+}
+
+function DayItem(props: DayItemProps) {
   const date = getDate(props.day.dt);
   const { icon } = props.day.weather[0];
   return (
     <DayContainer onClick={props.onClick}>
-      <WeatherIcon src={`/images/${icon}.svg`} alt="Weather" />
+      <WeatherIcon src={process.env.PUBLIC_URL + `/weather-icons/${icon}.svg`} alt="Weather" />
       <Date>{date}</Date>
     </DayContainer>
   );

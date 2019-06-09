@@ -1,6 +1,6 @@
 // https://openweathermap.org/weather-conditions
 
-export default function honestText(inputId) {
+export default function honestText(inputId: number) {
   switch (inputId) {
     case 200:
       return "Did you ask for thunder and a sprinkle of light rain with your coffee?";

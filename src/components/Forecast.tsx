@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import queryString from "query-string";
-import { Link, navigate } from "@reach/router";
+import { RouteComponentProps, Link } from "react-router-dom";
 import styled from "styled-components";
-import { Planet } from "react-kawaii";
 import DayItem from "./DayItem";
-import KawaiiAnimated from "./KawaiiAnimated";
-import api from "../utils/api";
+import { getForecast } from "../utils/api";
 
 const ForecastWrapper = styled.main`
   display: flex;
@@ -63,66 +61,71 @@ const TryButton = styled.button`
   background-color: #70c1b3;
 `;
 
-class Forecast extends React.Component {
-  constructor(props) {
-    super(props);
+// interface ForecastData {
+//   list: {
+//     [key: string]: string | number | object,
+//     dt: number
+//   }[]
+// }
 
-    this.state = {
-      forecastData: [],
-      loading: true,
-      error: null
-    };
-    this.makeRequest = this.makeRequest.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+interface ForecastData {
+  list: {
+    dt: number,
+    weather: {
+      icon: string
+    }[]
+  }[],
+}
+
+interface ListItemProps {
+  day: {
+    dt: number,
+    weather: {
+      icon: string
+    }[]
+  },
+}
+
+
+const Forecast = ({ history, location }: RouteComponentProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+  const [forecastData, setForecastData] = React.useState<ForecastData | null>(null);
+  const [city, setCity] = React.useState('')
+
+  useEffect(() => {
+    const queriedString = queryString.parse(location.search).city
+    const city = queriedString!.toString()
+    setCity(city)
+    makeRequest(city)
+  }, [location.search])
+
+  const handleClick = (city: any) => {
+    console.log(city)
+    history.push(`/detailed/${city}`, { state: city });
   }
+  const makeRequest = (city: string) => {
+    setIsLoading(true)
 
-  componentDidMount() {
-    this.city = queryString.parse(this.props.location.search).city;
-    this.makeRequest(this.city);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.city = queryString.parse(nextProps.location.search).city;
-    this.makeRequest(this.city);
-  }
-
-  makeRequest(city) {
-    this.setState(() => ({
-      loading: true
-    }));
-
-    api
-      .getForecast(city)
+    getForecast(city)
       .then(res => {
-        this.setState(() => ({
-          // FIXME: REMEMBER TO CHANGE TO 'FALSE' FOR PROD
-          loading: false,
-          forecastData: res,
-          error: null
-        }));
+        setIsLoading(false)
+        setForecastData(res)
+        setError(null)
       })
       .catch(error => {
-        this.setState(() => ({
-          error: "City not found",
-          loading: false
-        }));
+        setError("City not found")
+        setIsLoading(false)
       });
   }
-
-  handleClick(city) {
-    navigate(`/detailed/${this.city}`, { state: city });
-  }
-
-  render() {
-    const { error, loading, forecastData } = this.state;
-    if (loading === true) {
+    if (isLoading) {
       return (
         <ImageWrapper
           css="
             height: 80vh;
           "
         >
-          <KawaiiAnimated />
+          <h1>Loading</h1>
         </ImageWrapper>
       );
     }
@@ -132,7 +135,7 @@ class Forecast extends React.Component {
         <ErrorContainer>
           <ErrorHeader>{error}</ErrorHeader>
           <ImageWrapper>
-            <Planet size={200} mood="sad" color="#FDA7DC" />
+            <h1>Error</h1>
           </ImageWrapper>
           <ErrorText>
             Do yourself a favor and{" "}
@@ -148,21 +151,21 @@ class Forecast extends React.Component {
 
     return (
       <ForecastWrapper>
-        <CityName>{this.city.toUpperCase()}</CityName>
+        <CityName>{city.toUpperCase()}</CityName>
         <ForecastDays>
-          {forecastData.list.map(function(listItem) {
+          {forecastData && forecastData.list.map((listItem: ListItemProps["day"]) => {
             return (
               <DayItem
-                onClick={this.handleClick.bind(this, listItem)}
+                onClick={() => handleClick(listItem)}
                 key={listItem.dt}
                 day={listItem}
               />
             );
-          }, this)}
+          })}
         </ForecastDays>
       </ForecastWrapper>
     );
-  }
 }
+
 
 export default Forecast;

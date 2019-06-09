@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "@reach/router";
 import styled from "styled-components";
 
 const Navbar = styled.nav`
@@ -22,11 +21,11 @@ const Navbar = styled.nav`
 function Header() {
   return (
     <Navbar>
-      <Link
+      <a
         css="
             margin: auto;
           "
-        to="/"
+        href="/"
       >
         <h1
           css="
@@ -42,7 +41,7 @@ function Header() {
           </span>{" "}
           Honest Weather
         </h1>
-      </Link>
+      </a>
     </Navbar>
   );
 }
