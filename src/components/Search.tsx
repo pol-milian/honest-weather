@@ -41,6 +41,7 @@ export const SearchButton = styled.button`
   display: block;
   background-color: var(--turquoise);
   box-shadow: 0 15px 35px hsla(0, 0%, 0%, .2);
+  transition: all linear .1s;
   &:hover {
     box-shadow: none;
   }

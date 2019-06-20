@@ -52,6 +52,7 @@ const ForecastWrapper = styled.main`
 
 const CityName = styled.h1`
   text-align: center;
+  letter-spacing: .05em;
   display: block;
 `;
 
