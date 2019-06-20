@@ -13,7 +13,7 @@ const Input = styled.input`
   height: 180px;
   margin-bottom: 3rem;
   color: var(--black);
-  width: 600px;
+  width: 100%;
   display: block;
   padding: 0.3rem 0.25em;
   border: 1px #247ba0;
@@ -25,7 +25,7 @@ const Input = styled.input`
   }
 `;
 
-const SearchButton = styled.button`
+export const SearchButton = styled.button`
   border-radius: 100px;
   padding: 2rem;
   border: none;
@@ -36,6 +36,10 @@ const SearchButton = styled.button`
   position: relative;
   display: block;
   background-color: var(--turquoise);
+  box-shadow: 0 15px 35px hsla(0, 0%, 0%, .2);
+  &:hover {
+    box-shadow: none;
+  }
 `;
 
 interface Props {
