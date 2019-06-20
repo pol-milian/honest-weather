@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import queryString from "query-string";
+import { SearchButton } from './Search';
 import { RouteComponentProps, Link } from "react-router-dom";
 import styled from "styled-components";
 import DayItem from "./DayItem";
@@ -48,18 +49,7 @@ const ErrorHeader = styled.h1`
   margin: 0;
 `;
 
-const TryButton = styled.button`
-  border-radius: 100px;
-  padding: 2rem;
-  border: none;
-  font-size: 3.5rem;
-  text-decoration: none;
-  width: 400px;
-  color: #fff;
-  position: relative;
-  display: block;
-  background-color: #70c1b3;
-`;
+const TryButton = styled(SearchButton)``;
 
 // interface ForecastData {
 //   list: {
