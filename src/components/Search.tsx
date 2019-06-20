@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  margin: 6rem 0;
+  margin-top: 6rem;
 `;
 
 const Input = styled.input`
@@ -15,6 +15,9 @@ const Input = styled.input`
   color: var(--black);
   display: block;
   font-size: 36px;
+  @media only screen and (max-width: 500px) {
+    font-size: 20px;
+  }
   padding: 0.3rem 0.25em;
   border: 1px solid lightgrey
   border-radius: 10px;

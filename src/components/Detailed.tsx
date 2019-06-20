@@ -13,7 +13,6 @@ const DayWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
-  margin: var(--generalMargin);
 `;
 
 const InfoWrapper = styled.div`

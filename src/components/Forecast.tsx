@@ -88,6 +88,9 @@ const ErrorHeader = styled.h1`
 
 const TryButton = styled(SearchButton)`
   margin-top: 20px;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 // interface ForecastData {
