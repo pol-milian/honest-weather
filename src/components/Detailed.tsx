@@ -2,20 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import DayItem from "./DayItem";
 import { convertTemp } from "../utils/helpers";
+import { SearchButton } from './Search'
 import honestText from "../utils/honestText";
 
-const BackButton = styled.button`
-  margin: auto;
-  border-radius: 100px;
-  padding: 2rem;
-  border: none;
-  font-size: 4rem;
-  text-decoration: none;
-  width: 400px;
-  color: #fff;
-  position: relative;
-  display: block;
-  background-color: var(--turquoise);
+const BackButton = styled(SearchButton)`
 `;
 
 const DayWrapper = styled.div`
@@ -27,21 +17,22 @@ const DayWrapper = styled.div`
 `;
 
 const InfoWrapper = styled.div`
-  margin: 1vh 10vw;
+  margin-bottom: 20px;
 `;
 
 const WeatherReport = styled.p`
-  font-size: 3rem;
+  text-align: left;
+  
 `;
 
 const MinTemp = styled.span`
   color: blue;
-  font-weight: 700;
+  font-weight: 600;
 `;
 
 const MaxTemp = styled.span`
   color: red;
-  font-weight: 700;
+  font-weight: 600;
 `;
 
 interface DetailedProps {
@@ -78,7 +69,7 @@ const Detailed = ({ location: { state: { state } } }: DetailedProps) => {
           <MaxTemp>{maxDeg} C</MaxTemp>.
           </WeatherReport>
       </InfoWrapper>
-      <BackButton onClick={() => window.history.back()}>Go Back</BackButton>
+      <BackButton onClick={() => window.history.back()}>GO BACK</BackButton>
     </DayWrapper>
   )
 

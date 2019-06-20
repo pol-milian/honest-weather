@@ -3,9 +3,9 @@ import React from "react";
 import styled from "styled-components";
 import Search from "./Search";
 
-const CityPrompt = styled.p`
+const CityPrompt = styled.h1`
   text-align: center;
-  font-size: 3.5rem;
+  
 `;
 
 const MainWrapper = styled.main`

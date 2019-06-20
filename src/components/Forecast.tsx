@@ -6,6 +6,45 @@ import styled from "styled-components";
 import DayItem from "./DayItem";
 import { getForecast } from "../utils/api";
 
+const LoaderWrapper = styled.div`
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+`;
+
+const Hourglass = styled.div`
+display: inline-block;
+position: relative;
+width: 64px;
+height: 64px;
+&:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid var(--turquoise);
+  border-color: var(--turquoise) transparent var(--turquoise) transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+`
+
 const ForecastWrapper = styled.main`
   display: flex;
   flex-direction: column;
@@ -14,7 +53,6 @@ const ForecastWrapper = styled.main`
 const CityName = styled.h1`
   text-align: center;
   display: block;
-  font-size: 5rem;
 `;
 
 const ForecastDays = styled.section`
@@ -41,15 +79,15 @@ const ImageWrapper = styled.div`
 `;
 
 const ErrorText = styled.p`
-  font-size: 3rem;
 `;
 
 const ErrorHeader = styled.h1`
-  font-size: 5rem;
   margin: 0;
 `;
 
-const TryButton = styled(SearchButton)``;
+const TryButton = styled(SearchButton)`
+  margin-top: 20px;
+`;
 
 // interface ForecastData {
 //   list: {
@@ -108,53 +146,49 @@ const Forecast = ({ history, location }: RouteComponentProps) => {
         setIsLoading(false)
       });
   }
-    if (isLoading) {
-      return (
-        <ImageWrapper
-          css="
-            height: 80vh;
-          "
-        >
-          <h1>Loading</h1>
-        </ImageWrapper>
-      );
-    }
-
-    if (error) {
-      return (
-        <ErrorContainer>
-          <ErrorHeader>{error}</ErrorHeader>
-          <ImageWrapper>
-            <h1>Error</h1>
-          </ImageWrapper>
-          <ErrorText>
-            Do yourself a favor and{" "}
-            <strong>stop eating chips while typing.</strong> Wash your hands and
-            try again?
-          </ErrorText>
-          <Link to="/">
-            <TryButton>Try Again!</TryButton>
-          </Link>
-        </ErrorContainer>
-      );
-    }
-
+  if (isLoading) {
     return (
-      <ForecastWrapper>
-        <CityName>{city.toUpperCase()}</CityName>
-        <ForecastDays>
-          {forecastData && forecastData.list.map((listItem: ListItemProps["day"]) => {
-            return (
-              <DayItem
-                onClick={() => handleClick(listItem)}
-                key={listItem.dt}
-                day={listItem}
-              />
-            );
-          })}
-        </ForecastDays>
-      </ForecastWrapper>
+      <LoaderWrapper>
+        <Hourglass />
+      </LoaderWrapper>
     );
+  }
+
+  if (error) {
+    return (
+      <ErrorContainer>
+        <ErrorHeader>{error}</ErrorHeader>
+        <ImageWrapper>
+          <h1>Error</h1>
+        </ImageWrapper>
+        <ErrorText>
+          Do yourself a favor and{" "}
+          <strong>stop eating chips while typing.</strong> Wash your hands and
+          try again?
+          </ErrorText>
+        <Link to="/">
+          <TryButton>TRY AGAIN!</TryButton>
+        </Link>
+      </ErrorContainer>
+    );
+  }
+
+  return (
+    <ForecastWrapper>
+      <CityName>{city.toUpperCase()}</CityName>
+      <ForecastDays>
+        {forecastData && forecastData.list.map((listItem: ListItemProps["day"]) => {
+          return (
+            <DayItem
+              onClick={() => handleClick(listItem)}
+              key={listItem.dt}
+              day={listItem}
+            />
+          );
+        })}
+      </ForecastDays>
+    </ForecastWrapper>
+  );
 }
 
 

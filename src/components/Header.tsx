@@ -11,7 +11,6 @@ const Navbar = styled.nav`
   }
   #emojis {
     &:hover {
-      font-size: 6rem;
       transition: all 0.5s ease-in;
     }
     transition: all 0.5s ease-in;

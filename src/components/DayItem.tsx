@@ -13,11 +13,9 @@ const DayContainer = styled.div`
 `;
 
 const WeatherIcon = styled.img`
-  width: 300px;
-  height: auto;
+  width: 50%;
 `;
 const Date = styled.h2`
-  font-size: 3rem;
   font-weight: 500;
 `;
 

@@ -12,6 +12,7 @@ import Header from './Header'
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
+  @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
   :root {
     --black: #707070;
     --blue: #247ba0;
@@ -27,11 +28,20 @@ const GlobalStyle = createGlobalStyle`
     padding: 2rem;
     margin: 0 auto;
     color: var(--black);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  h1 {
+    font-size: 48px;
+    font-weight: 400;
+  }
+  h2 {
+    font-size: 36px;
+  }
+  p {
+    line-height: 1.3;
   }
   a {
     text-decoration: none;
@@ -43,7 +53,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Header />
+      {/* <Header /> */}
       <Router>
         <Route path="/" exact component={Main} />
         <Route path="/forecast" component={Forecast} />

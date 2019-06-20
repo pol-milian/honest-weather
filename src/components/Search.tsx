@@ -10,15 +10,14 @@ const Wrapper = styled.div`
 `;
 
 const Input = styled.input`
-  height: 180px;
-  margin-bottom: 3rem;
+  height: 100px;
+  margin-bottom: 20px;
   color: var(--black);
-  width: 100%;
   display: block;
+  font-size: 36px;
   padding: 0.3rem 0.25em;
-  border: 1px #247ba0;
-  border-radius: 52px;
-  font-size: 4rem;
+  border: 1px solid lightgrey
+  border-radius: 10px;
   box-shadow: 0 0 1em 0.25em rgba(36, 123, 160, 0.23);
   &::placeholder {
     color: #d9d9d9;
@@ -27,13 +26,18 @@ const Input = styled.input`
 
 export const SearchButton = styled.button`
   border-radius: 100px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  margin: auto;
   padding: 2rem;
   border: none;
-  font-size: 4rem;
   text-decoration: none;
-  width: 400px;
+  width: 200px;
+  @media only screen and (max-width: 480px) {
+    width: 60%;
+  }
   color: #fff;
-  position: relative;
   display: block;
   background-color: var(--turquoise);
   box-shadow: 0 15px 35px hsla(0, 0%, 0%, .2);
@@ -68,7 +72,7 @@ const Search = ({ onSubmit}: Props) => {
       />
 
       <SearchButton type="button" onClick={handleSubmit}>
-        Search!
+        SEARCH!
         </SearchButton>
     </Wrapper >
   )
