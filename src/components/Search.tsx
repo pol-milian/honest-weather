@@ -22,6 +22,9 @@ const Input = styled.input`
   &::placeholder {
     color: #d9d9d9;
   }
+  @media only screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export const SearchButton = styled.button`
@@ -74,7 +77,7 @@ const Search = ({ onSubmit}: Props) => {
 
       <SearchButton type="button" onClick={handleSubmit}>
         SEARCH!
-        </SearchButton>
+      </SearchButton>
     </Wrapper >
   )
 }
