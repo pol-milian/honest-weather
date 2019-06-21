@@ -32,8 +32,8 @@ export function convertTemp(kelvin: string): number {
 }
 
 
-export function getDate(unixTimestmap: number): string {
-  const date = new Date(unixTimestmap * 1000);
+export function getDate(unixTimestamp: number): string {
+  const date = new Date(unixTimestamp * 1000);
   const day = daysMap[date.getDay()];
   const month = `${monthsMap[date.getMonth()]} ${date.getDate()}`;
   return `${day}, ${month}`;
