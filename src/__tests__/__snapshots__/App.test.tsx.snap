@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders 1`] = `
+<main
+  className="sc-ifAKCX ftAxxp"
+>
+  <h1
+    className="sc-bxivhb jLngrx"
+  >
+    What is the weather like in...
+  </h1>
+  <div
+    className="sc-bdVaJa kHIJVD"
+  >
+    <input
+      className="sc-bwzfXH buIknn"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="your shitty city 💩"
+      required={true}
+      type="text"
+      value=""
+    />
+    <button
+      className="sc-htpNat jSbjIy"
+      onClick={[Function]}
+      type="button"
+    >
+      SEARCH!
+    </button>
+  </div>
+</main>
+`;
