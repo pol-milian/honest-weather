@@ -93,13 +93,6 @@ const TryButton = styled(SearchButton)`
   }
 `;
 
-// interface ForecastData {
-//   list: {
-//     [key: string]: string | number | object,
-//     dt: number
-//   }[]
-// }
-
 interface ForecastData {
   list: {
     dt: number,
