@@ -66,6 +66,7 @@ const Search = ({ onSubmit}: Props) => {
   return (
     <Wrapper>
       <Input
+        data-testid="search"
         type="text"
         placeholder="your shitty city 💩"
         value={city}
