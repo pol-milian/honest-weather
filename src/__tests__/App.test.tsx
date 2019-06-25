@@ -1,9 +1,11 @@
 import React from 'react';
 import App from '../components/App';
-import renderer from 'react-test-renderer';
+import { render, cleanup } from '@testing-library/react';
 
-test('it renders', () => {
-  const component = renderer.create(<App />)
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+afterEach(cleanup);
+
+test('renders without crashing', () => {
+  const { debug, queryByText } = render(<App />);
+  expect(queryByText(/what is the weather like in.../i)).toBeTruthy();
+  // debug();
 })
