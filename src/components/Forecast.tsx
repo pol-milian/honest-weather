@@ -146,7 +146,7 @@ const Forecast = ({ history, location }: RouteComponentProps) => {
   if (isLoading) {
     return (
       <LoaderWrapper>
-        <Hourglass />
+        <Hourglass data-testid="loader" />
       </LoaderWrapper>
     );
   }
@@ -156,7 +156,7 @@ const Forecast = ({ history, location }: RouteComponentProps) => {
       <ErrorContainer>
         <ErrorHeader>{error}</ErrorHeader>
         <ImageWrapper>
-          <h1>Error</h1>
+          <h1 data-testid="error">Error</h1>
         </ImageWrapper>
         <ErrorText>
           Do yourself a favor and{" "}
@@ -172,7 +172,7 @@ const Forecast = ({ history, location }: RouteComponentProps) => {
 
   return (
     <ForecastWrapper>
-      <CityName>{city.toUpperCase()}</CityName>
+      <CityName data-testid="city-name">{city.toUpperCase()}</CityName>
       <ForecastDays>
         {forecastData && forecastData.list.map((listItem: ListItemProps["day"]) => {
           return (

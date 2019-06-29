@@ -1,6 +1,6 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 import styledNormalize from 'styled-normalize'
 // import { } from 'styled-components/cssprop'
 import * as types from 'styled-components/cssprop'
@@ -48,18 +48,28 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+export const LocationDisplay = withRouter(({ location }) => (
+  <div data-testid="location-display">{location.pathname}</div>
+));
+
+const NoMatch = () => <div>No match</div>
+
+
 
 const App = () => {
   return (
-    <>
+    <div>
       <GlobalStyle />
       {/* <Header /> */}
-      <Router>
-        <Route path="/" exact component={Main} />
-        <Route path="/forecast" component={Forecast} />
-        <Route path="/detailed/:city" component={Detailed} />
-      </Router>
-    </>
+        <Switch>
+          <Route path="/" exact component={Main} />
+          <Route path="/forecast" component={Forecast} />
+          <Route path="/detailed/:city" component={Detailed} />
+          <Route component={NoMatch} />
+          
+        </Switch>
+        <LocationDisplay />
+    </div>
   );
 }
 
