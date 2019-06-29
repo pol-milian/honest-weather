@@ -1,11 +1,55 @@
-import React from 'react';
-import App from '../components/App';
-import { render, cleanup } from '@testing-library/react';
+import React from 'react'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
+import App, { LocationDisplay } from '../components/App';
+import { render, cleanup, fireEvent, wait } from '@testing-library/react';
 
 afterEach(cleanup);
 
+function renderWithRouter(
+  ui: React.ReactChild,
+  {
+    route = '/',
+    history = createMemoryHistory({ initialEntries: [route] }),
+  } = {}
+) {
+  return {
+    ...render(<Router history={history}>{ui}</Router>),
+    history,
+  }
+}
+
 test('renders without crashing', () => {
-  const { debug, queryByText } = render(<App />);
-  expect(queryByText(/what is the weather like in.../i)).toBeTruthy();
-  // debug();
+  const route = '/'
+  const { getByTestId, debug } = renderWithRouter(<App />, { route })
+  expect(getByTestId('location-display').textContent).toBeTruthy();
 })
+
+test('landing on a bad page', () => {
+  const { container, debug } = renderWithRouter(<App />, {
+    route: '/something-that-does-not-match',
+  })
+  expect(container.innerHTML).toMatch('No match')
+})
+
+test('rendering a component that uses withRouter', () => {
+  const route = '/forecast'
+  const { getByTestId } = renderWithRouter(<LocationDisplay />, { route })
+  expect(getByTestId('location-display').textContent).toBe(route)
+})
+
+test('full app rendering/navigating', async () => {
+  const route = '/'
+  const { container, debug, getByTestId, getByText } = renderWithRouter(<App />, { route })
+  expect(getByTestId('location-display')).toBeTruthy();
+  fireEvent.change(getByTestId('search'), {
+    target: { value: 'london' },
+  });
+  fireEvent.click(getByText(/search!/i))
+  await wait(() => {
+    expect(getByTestId('loader')).toBeTruthy();
+  })
+  
+})
+
+
