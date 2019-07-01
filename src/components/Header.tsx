@@ -6,14 +6,10 @@ const Navbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
+  font-weight: 600;
   a {
+    margin: auto;
     color: var(--blue);
-  }
-  #emojis {
-    &:hover {
-      transition: all 0.5s ease-in;
-    }
-    transition: all 0.5s ease-in;
   }
 `;
 
@@ -26,7 +22,7 @@ function Header() {
           "
         href="/"
       >
-        <h1
+        <p
           css="
             display: inline-block;
           "
@@ -39,7 +35,7 @@ function Header() {
             🖕🌧️
           </span>{" "}
           Honest Weather
-        </h1>
+        </p>
       </a>
     </Navbar>
   );
