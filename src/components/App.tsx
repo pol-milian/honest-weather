@@ -9,6 +9,7 @@ import Main from './Main'
 import Forecast from './Forecast'
 import Detailed from './Detailed'
 import Header from './Header'
+import Footer from './Footer'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -33,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
   }
   h1 {
     font-size: 48px;
@@ -65,7 +67,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-        {/* <Header /> */}
+        <Header />
         <Switch>
           <Route path="/" exact component={Main} />
           <Route path="/forecast" component={Forecast} />
@@ -73,6 +75,7 @@ const App = () => {
           <Route component={NoMatch} />
         </Switch>
         <LocationDisplay />
+        <Footer />
       
     </>
     
