@@ -9,11 +9,6 @@ jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 
-
-// TODO: https://www.leighhalliday.com/async-axios-react-testing-library
-
-
-
 function renderWithRouter(
   ui: React.ReactChild,
   {
