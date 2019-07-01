@@ -34,7 +34,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    height: 100vh;
   }
   h1 {
     font-size: 48px;
