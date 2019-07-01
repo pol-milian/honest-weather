@@ -38,18 +38,5 @@ test('rendering a component that uses withRouter', () => {
   expect(getByTestId('location-display').textContent).toBe(route)
 })
 
-test('full app rendering/navigating', async () => {
-  const route = '/'
-  const { container, debug, getByTestId, getByText } = renderWithRouter(<App />, { route })
-  expect(getByTestId('location-display')).toBeTruthy();
-  fireEvent.change(getByTestId('search'), {
-    target: { value: 'london' },
-  });
-  fireEvent.click(getByText(/search!/i))
-  await wait(() => {
-    expect(getByTestId('loader')).toBeTruthy();
-  })
-  
-})
 
 
