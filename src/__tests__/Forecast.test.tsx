@@ -174,11 +174,11 @@ test('<Forecast /> displays a loader and loads with a valid city', async () => {
     search: '?city=london',
   };
   const { getByTestId, debug, queryAllByTestId } = renderWithRouter(<Forecast location={goodLocation} />, { route })
-
+  
 
   expect(getByTestId('loader')).toBeTruthy();
   await wait(() => {
-    expect(getByTestId('city-name')).toBeFalsy();
+    expect(getByTestId('city-name')).toBeTruthy();
     expect(queryAllByTestId('day-item')).toBeTruthy();
   })
   expect(mockedAxios.get).toHaveBeenCalledTimes(1)
