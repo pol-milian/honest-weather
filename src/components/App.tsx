@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import styledNormalize from 'styled-normalize'
 // import { } from 'styled-components/cssprop'
 import * as types from 'styled-components/cssprop'
+import styled from 'styled-components'
 import Main from './Main'
 import Forecast from './Forecast'
 import Detailed from './Detailed'
@@ -48,8 +49,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+const LocationDisplayWrapper = styled.div`
+  display: none;
+`;
+
 export const LocationDisplay = withRouter(({ location }) => (
-  <div data-testid="location-display">{location.pathname}</div>
+  <LocationDisplayWrapper data-testid="location-display">{location.pathname}</LocationDisplayWrapper>
 ));
 
 const NoMatch = () => <div data-testid="no-match">No match</div>
