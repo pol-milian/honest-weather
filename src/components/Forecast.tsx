@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import queryString from "query-string";
 import { SearchButton } from './Search';
 import { RouteComponentProps, Link } from "react-router-dom";
@@ -113,7 +113,7 @@ interface ListItemProps {
 
 
 const Forecast = ({ history, location }: RouteComponentProps) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
   const [forecastData, setForecastData] = React.useState<ForecastData | null>(null);
   const [city, setCity] = React.useState('')
@@ -126,17 +126,13 @@ const Forecast = ({ history, location }: RouteComponentProps) => {
   }, [location.search])
 
   const handleClick = (city: any) => {
-    console.log(city)
     history.push(`/detailed/${city}`, { state: city });
   }
   const makeRequest = (city: string) => {
-    setIsLoading(true)
-
     getForecast(city)
       .then(res => {
         setIsLoading(false)
         setForecastData(res)
-        setError(null)
       })
       .catch(error => {
         setError("City not found")
@@ -177,6 +173,7 @@ const Forecast = ({ history, location }: RouteComponentProps) => {
         {forecastData && forecastData.list.map((listItem: ListItemProps["day"]) => {
           return (
             <DayItem
+              data-testid="day-item"
               onClick={() => handleClick(listItem)}
               key={listItem.dt}
               day={listItem}
