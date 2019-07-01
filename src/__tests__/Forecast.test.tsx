@@ -5,13 +5,10 @@ import { render, cleanup, fireEvent, wait, waitForElement } from '@testing-libra
 import Forecast from '../components/Forecast';
 import axios from 'axios';
 
+afterEach(cleanup);
+
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
-
-
-
-// TODO: https://www.leighhalliday.com/async-axios-react-testing-library
-
 
 
 function renderWithRouter(
@@ -173,10 +170,10 @@ test('<Forecast /> displays a loader and loads with a valid city', async () => {
   };
   mockedAxios.get.mockResolvedValueOnce(goodResponse as any);
   const route = '/forecast?city=london'
-  const Goodlocation = {
+  const goodLocation = {
     search: '?city=london',
   };
-  const { getByTestId, debug, queryAllByTestId } = renderWithRouter(<Forecast location={Goodlocation} />, { route })
+  const { getByTestId, debug, queryAllByTestId } = renderWithRouter(<Forecast location={goodLocation} />, { route })
   
 
   expect(getByTestId('loader')).toBeTruthy();
