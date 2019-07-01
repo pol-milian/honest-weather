@@ -10,6 +10,9 @@ const DayContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const WeatherIcon = styled.img`
