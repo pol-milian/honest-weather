@@ -6,6 +6,13 @@ import { SearchButton } from './Search'
 import honestText from "../utils/honestText";
 
 const BackButton = styled(SearchButton)`
+  margin-bottom: 1rem;
+`;
+
+export const SearchAgainButton = styled(SearchButton)`
+  border: 4px solid var(--turquoise);
+  background-color: white;
+  color: var(--turquoise);
 `;
 
 const DayWrapper = styled.div`
@@ -69,6 +76,7 @@ const Detailed = ({ location: { state: { state } } }: DetailedProps) => {
           </WeatherReport>
       </InfoWrapper>
       <BackButton onClick={() => window.history.back()}>GO BACK</BackButton>
+      <SearchAgainButton onClick={() => window.location.href="/"}>SEARCH</SearchAgainButton>
     </DayWrapper>
   )
 
